@@ -13,11 +13,11 @@ function onLoginForm(event) {
         password,
     };
 
-    console.log(formData);
-
     if (email === '' || password === '') {
         alert ('Please fill in all the fields!')
-    }
+    } else {
+        console.log(formData);
+    };
 
     event.currentTarget.reset();
 

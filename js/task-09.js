@@ -3,12 +3,10 @@ function getRandomHexColor() {
 }
 
 const bodyEl = document.body;
-const backgroundColorTextEl = document.querySelector('.color');
+let backgroundColorTextEl = document.querySelector('.color');
 const changeColorBtn = document.querySelector('.change-color');
 
-bodyEl.style.backgroundColor = 'red';
-backgroundColorTextEl.addEventListener('change', getRandomHexColor);
-changeColorBtn.addEventListener('click', getRandomHexColor);
-
-console.log(backgroundColorTextEl);
-console.log(changeColorBtn);
+changeColorBtn.addEventListener('click', () => {
+  bodyEl.style.backgroundColor = getRandomHexColor();
+  backgroundColorTextEl.textContent = bodyEl.style.backgroundColor;
+});
