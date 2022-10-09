@@ -7,51 +7,21 @@ const btnCreate = document.querySelector('button[data-create]');
 const btnDestroy = document.querySelector('button[data-destroy]');
 const divBoxesEl = document.querySelector('#boxes');
 
-inputEl.addEventListener('input', () => {
-  console.log(inputEl.value);
-});
-btnCreate.addEventListener('click', () => {
-  console.log('Create this!')
-});
-btnDestroy.addEventListener('click', () => {
-  console.log('Destroy this!')
-});
+btnCreate.addEventListener('click', createBoxes);
+btnDestroy.addEventListener('click', destroyBoxes);
 
-
-// const createBoxes = function (amount) {
-//   const something = [];
-
-// return something.push(() => {
-//   const createdDiv = document.createElement('div');
-//   createdDiv.style.background = getRandomHexColor();
-//   createdDiv.style.width = '30px';
-//   createdDiv.style.height = '30px';
-  
-//   return createdDiv;
-//   })
-// };
-
-// const createdDivs = createBoxes(inputEl.value);
-
-// // divBoxesEl.append(createdDiv);
-// divBoxesEl.append(...createdDivs);
-
-
-
-
-const some = [];
-function valueNumbers(value) {
-  for (let index = 1; index <= value; index += 1) {
-    some.push(index);
+// 1)
+function createBoxes(amount) {
+  const someArray = []; 
+  for (let index = 1; index <= inputEl.value; index += 1) {
+    someArray.push(index);
   };
-  return some;
+  
+  const itemsEl = createArrayOfDivs(someArray);
+  divBoxesEl.append(...itemsEl);
 };
 
-console.log(valueNumbers(12));
-
-
-
-const createBoxes = function (array) {
+const createArrayOfDivs = function (array) {
   return array.map(() => {
     const createdDiv = document.createElement('div');
     createdDiv.style.background = getRandomHexColor();
@@ -62,6 +32,7 @@ const createBoxes = function (array) {
   });
 };
 
-const itemsEl = createBoxes(some);
-
-divBoxesEl.append(...itemsEl);
+// 2)
+function destroyBoxes() {
+  divBoxesEl.innerHTML = '';
+};
